@@ -1,0 +1,45 @@
+/* src/styles/App.module.css */
+.appContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--gray-bg);
+  overflow: hidden; /* Prevents horizontal scrollbar */
+  position: relative; /* For the overlay */
+}
+
+/* Overlay behind sidebar when open on mobile */
+.appContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Below sidebar, above main content */
+  display: none; /* Hidden by default */
+}
+
+.appContainer.overlayActive::before {
+  display: block; /* Show when sidebar is open */
+}
+
+.mainContentArea {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow vertical scrolling for main content */
+  height: 100vh; /* Ensure it takes full height to allow its own scrolling */
+}
+
+/* Responsive adjustments for overall app layout */
+@media (max-width: 768px) {
+  .appContainer {
+    /* flex-direction: column is removed here as sidebar will now overlay */
+  }
+
+  .mainContentArea {
+    height: 100vh; /* Keep it fixed on mobile to allow sidebar overlay */
+    overflow: hidden; /* Prevent content scroll when sidebar is open */
+  }
+}

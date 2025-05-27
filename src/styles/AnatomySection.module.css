@@ -1,0 +1,82 @@
+/* src/styles/AnatomySection.module.css */
+.anatomySection {
+  flex: 1; /* Allows this section to grow and take available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* For absolute positioning of indicators within it */
+  overflow: hidden; /* Ensures indicators don't spill out unexpectedly */
+}
+
+.anatomyImageContainer {
+  position: relative; /* Important for positioning indicators relative to the image */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.humanBodyImage {
+  max-width: 80%; /* Adjust size of the image relative to its container */
+  max-height: 100%;
+  object-fit: contain; /* Ensures the image fits within its boundaries */
+  display: block; /* Remove any extra space below the image */
+}
+
+.indicator {
+  position: absolute; /* Position relative to .anatomyImageContainer */
+  display: flex;
+  align-items: center;
+  background-color: var(--white-bg); /* White background for the indicator bubble */
+  padding: 5px 12px; /* Padding inside the bubble */
+  border-radius: 20px; /* Highly rounded corners */
+  box-shadow: var(--shadow-subtle); /* Subtle shadow for the bubble */
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap; /* Prevent text from wrapping */
+  /* Using transform to precisely center the indicator on its given (top, left) coordinates */
+  transform: translate(-50%, -50%);
+}
+
+.indicatorDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px; /* Space between dot and text */
+}
+
+/* Status-specific dot colors */
+.indicator.healthy .indicatorDot {
+  background-color: var(--healthy-green);
+}
+.indicator.critical .indicatorDot {
+  background-color: var(--critical-red);
+}
+.indicator.warning .indicatorDot {
+  background-color: var(--warning-orange);
+}
+
+.indicatorText {
+  color: var(--text-color-dark);
+}
+
+/* Responsive adjustments for AnatomySection */
+@media (max-width: 768px) {
+  .anatomySection {
+    height: 250px; /* Give it a fixed height on smaller screens to control layout */
+    margin-bottom: 20px; /* Add space below it when stacked */
+  }
+  .humanBodyImage {
+    max-width: 70%; /* Adjust image size */
+  }
+  .indicator {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+  .indicatorDot {
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+  }
+}

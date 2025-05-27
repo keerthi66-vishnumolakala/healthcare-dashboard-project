@@ -1,0 +1,100 @@
+/* src/styles/UpcomingSchedule.module.css */
+.upcomingSchedule {
+  background-color: var(--white-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 25px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color-dark);
+  margin-bottom: 20px;
+}
+
+.scheduleList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between day sections */
+}
+
+.dayHeading {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color-light);
+  margin-bottom: 10px;
+}
+
+.appointmentsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+  gap: 15px; /* Space between appointment cards */
+}
+
+.appointmentCard {
+  background-color: var(--gray-bg);
+  padding: 15px;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.appointmentIcon {
+  font-size: 1.8rem;
+  color: var(--primary-blue);
+  flex-shrink: 0;
+}
+
+.appointmentDetails {
+  flex-grow: 1;
+}
+
+.appointmentTitle {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-color-dark);
+  margin-bottom: 5px;
+}
+
+.appointmentTime {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) { /* When main grid stacks vertically */
+    .upcomingSchedule {
+        padding: 20px;
+        margin-bottom: 20px; /* Add margin when it's part of a vertical stack */
+    }
+    .title {
+        font-size: 1.1rem;
+    }
+    .dayHeading {
+        font-size: 0.95rem;
+    }
+    .appointmentIcon {
+        font-size: 1.6rem;
+    }
+    .appointmentTitle {
+        font-size: 0.95rem;
+    }
+    .appointmentTime {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .upcomingSchedule {
+        padding: 15px;
+    }
+    .appointmentsGrid {
+        grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+    }
+}

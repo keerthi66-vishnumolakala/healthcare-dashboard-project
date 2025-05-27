@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* src/index.css */
+:root {
+  /* Colors */
+  --primary-blue: #3E82FC;
+  --secondary-blue: #EBF2FF; /* Lighter blue for hover/active states */
+  --text-color-dark: #333333;
+  --text-color-light: #777777;
+  --white-bg: #FFFFFF;
+  --gray-bg: #F8F9FB; /* Light gray background for cards/sections */
+  --border-color: #ECEFF3; /* Light border color */
+  --shadow-light: rgba(0, 0, 0, 0.05) 0px 3px 10px; /* Subtle shadow */
+  --shadow-subtle: rgba(0, 0, 0, 0.03) 0px 2px 5px; /* Even lighter shadow */
+
+  /* Status Colors */
+  --healthy-green: #28a745; /* Bootstrap-like green */
+  --critical-red: #dc3545;  /* Bootstrap-like red */
+  --warning-orange: #ffc107; /* Bootstrap-like yellow/orange */
+
+  /* Typography */
+  --font-family-sans: 'Roboto', sans-serif;
+
+  /* Spacing & Borders */
+  --spacing-unit: 8px; /* Base unit for consistent spacing */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 15px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--gray-bg); /* Overall background */
+  color: var(--text-color-dark);
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Material Symbols Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+/* General Material Symbols styling */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  vertical-align: middle; /* Align icons nicely with text */
+}

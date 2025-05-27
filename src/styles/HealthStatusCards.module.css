@@ -1,0 +1,203 @@
+/* src/styles/HealthStatusCards.module.css */
+.healthStatusCards {
+  display: flex;
+  flex-direction: column; /* Stack cards vertically */
+  gap: 15px; /* Space between individual cards */
+  flex: 0.7; /* Adjust flex ratio to give more space to anatomy section if needed */
+  min-width: 250px; /* Ensure cards don't get too squished */
+}
+
+.card {
+  background-color: var(--gray-bg); /* Lighter background than the overview container */
+  padding: 20px;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--border-color);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  /* Add these for better alignment and wrapping: */
+  flex-wrap: nowrap; /* Prevent wrapping unless absolutely necessary */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+/* src/styles/HealthStatusCards.module.css */
+.cardIcon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: var(--primary-blue);
+  /* These properties should be safe for hiding text, but confirm they're there */
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block; /* Crucial for text-indent to work correctly */
+  width: 1.5em; /* Ensure it has space to render the icon */
+  height: 1.5em; /* Ensure it has space to render the icon */
+  flex-shrink: 0;
+  /*
+  Temporary Debugging:
+  If icons are still not showing, temporarily comment out these three lines
+  to see if the icon name text appears. If it does, the font loading is the issue.
+  If it's still blank, something else is hiding the element.
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
+  */
+}
+
+.cardTitle {
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-grow: 1; /* Title takes available space */
+  white-space: nowrap; /* Prevent title from wrapping */
+  overflow: hidden; /* Hide overflow if it's too long */
+  text-overflow: ellipsis; /* Add ellipsis if text is cut off */
+}
+
+.cardStatus {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-sm);
+  text-transform: capitalize; /* Make the first letter uppercase */
+  font-weight: 500;
+  color: var(--white-bg); /* Default text color for status badges */
+  white-space: nowrap; /* Prevent status text from wrapping */
+  flex-shrink: 0; /* Prevent status badge from shrinking */
+  margin-left: 10px; /* Ensure space between title and status */
+}
+
+/* Status-specific background colors for the badges */
+.cardStatus.healthy {
+  background-color: var(--healthy-green);
+}
+.cardStatus.critical {
+  background-color: var(--critical-red);
+}
+.cardStatus.warning {
+  background-color: var(--warning-orange);
+  color: var(--text-color-dark); /* Darker text for warning for readability */
+}
+
+.cardDate {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  margin-bottom: 15px;
+}
+
+.progressBarContainer {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border-color); /* Background for the track */
+  border-radius: 4px;
+  overflow: hidden; /* Ensures progress bar stays within bounds */
+  margin-bottom: 15px;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* Status-specific progress bar colors */
+.progressBar.healthy {
+  background-color: var(--healthy-green);
+}
+.progressBar.critical {
+  background-color: var(--critical-red);
+}
+.progressBar.warning {
+  background-color: var(--warning-orange);
+}
+
+.detailsLink {
+  color: var(--primary-blue);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.detailsLink:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for HealthStatusCards */
+@media (max-width: 768px) {
+  .healthStatusCards {
+    width: 100%; /* Take full width when stacked */
+  }
+  .card {
+    padding: 15px;
+  }
+  .cardHeader {
+    flex-wrap: wrap; /* Allow header items to wrap on smaller screens */
+  }
+  .cardTitle {
+    font-size: 1rem;
+    white-space: normal; /* Allow title to wrap on small screens */
+    text-overflow: clip; /* No ellipsis if wrapped */
+  }
+  .cardStatus {
+    margin-top: 5px; /* Add space when wrapped */
+    margin-left: auto; /* Push to the right when wrapped */
+  }
+}
+.progressBarContainer {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border-color); /* Background for the track */
+  border-radius: 4px;
+  overflow: hidden; /* Ensures progress bar stays within bounds */
+  margin-bottom: 15px;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* Status-specific progress bar colors */
+.progressBar.healthy {
+  background-color: var(--healthy-green);
+}
+.progressBar.critical {
+  background-color: var(--critical-red);
+}
+.progressBar.warning {
+  background-color: var(--warning-orange);
+}
+
+.detailsLink {
+  color: var(--primary-blue);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.detailsLink:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for HealthStatusCards */
+@media (max-width: 768px) {
+  .healthStatusCards {
+    width: 100%; /* Take full width when stacked */
+  }
+  .card {
+    padding: 15px;
+  }
+  .cardHeader {
+    flex-wrap: wrap; /* Allow header items to wrap */
+  }
+  .cardTitle {
+    font-size: 1rem;
+  }
+  .cardStatus {
+    margin-top: 5px; /* Add space when wrapped */
+    margin-left: auto; /* Push to the right when wrapped */
+  }
+}

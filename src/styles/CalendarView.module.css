@@ -1,0 +1,230 @@
+/* src/styles/CalendarView.module.css */
+.calendarView {
+  background-color: var(--white-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 25px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  height: fit-content; /* Allow height to adjust to content */
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.month {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+
+.navArrows {
+  display: flex;
+  gap: 10px;
+}
+
+.navArrows span {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.navArrows span:hover {
+    color: var(--primary-blue);
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
+  gap: 10px; /* Space between days */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gridHeader {
+  font-size: 0.8rem;
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 5px; /* Space below day names */
+}
+
+.dayCell {
+  padding: 8px 0;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dayCell:hover {
+  background-color: var(--secondary-blue);
+}
+
+.dayNumber {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color-dark);
+}
+
+.appointmentDots {
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.appointmentDot {
+  width: 5px;
+  height: 5px;
+  background-color: var(--primary-blue);
+  border-radius: 50%;
+}
+
+.dayCell.activeDay {
+  background-color: var(--primary-blue); /* Active day background */
+}
+
+.dayCell.activeDay .dayNumber,
+.dayCell.activeDay .appointmentDot {
+  color: var(--white-bg); /* White text for active day */
+  background-color: var(--white-bg); /* White dots for active day */
+}
+
+.appointmentsList {
+  /* This section will stack vertically, no special grid/flex needed here */
+  /* If you want to refine spacing for appointments, you can add gap or margin-bottom */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between individual appointment items */
+}
+
+.appointmentItem {
+  display: flex;
+  align-items: flex-start; /* Align icon to the top of text */
+  gap: 15px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border-color); /* Subtle separator */
+}
+
+.appointmentItem:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+.appointmentIcon {
+  font-size: 1.8rem;
+  color: var(--primary-blue);
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.appointmentDetails {
+  flex-grow: 1;
+}
+
+.appointmentTitle {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-color-dark);
+  margin-bottom: 2px;
+}
+
+.appointmentTime {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  margin-bottom: 2px;
+}
+
+.appointmentDoctor {
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+}
+
+/* Responsive adjustments for CalendarView */
+@media (max-width: 1200px) { /* Adapts when main grid stacks */
+    .calendarView {
+        padding: 20px;
+    }
+    .calendarGrid {
+        gap: 8px;
+    }
+    .dayCell {
+        padding: 6px 0;
+    }
+    .dayNumber {
+        font-size: 0.95rem;
+    }
+    .appointmentItem {
+        padding: 8px 0;
+        gap: 10px;
+    }
+    .appointmentIcon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) { /* More compact for tablets/mobile */
+    .calendarView {
+        padding: 15px;
+    }
+    .calendarHeader {
+        margin-bottom: 15px;
+    }
+    .month {
+        font-size: 1.1rem;
+    }
+    .navArrows span {
+        font-size: 1.3rem;
+    }
+    .calendarGrid {
+        gap: 5px;
+    }
+    .gridHeader {
+        font-size: 0.75rem;
+    }
+    .dayCell {
+        padding: 5px 0;
+    }
+    .dayNumber {
+        font-size: 0.9rem;
+    }
+    .appointmentDots {
+        margin-top: 2px;
+    }
+    .appointmentDot {
+        width: 4px;
+        height: 4px;
+    }
+    .appointmentTitle {
+        font-size: 0.95rem;
+    }
+    .appointmentTime, .appointmentDoctor {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) { /* Tiny screens */
+    .calendarView {
+        padding: 10px;
+    }
+    .calendarGrid {
+        gap: 3px;
+    }
+    .gridHeader {
+        font-size: 0.7rem;
+    }
+    .dayCell {
+        padding: 3px 0;
+    }
+    .dayNumber {
+        font-size: 0.85rem;
+    }
+    .appointmentIcon {
+        font-size: 1.3rem;
+    }
+}

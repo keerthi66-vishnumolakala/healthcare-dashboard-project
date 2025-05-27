@@ -1,0 +1,20 @@
+/* src/styles/DashboardOverview.module.css */
+.dashboardOverview {
+  background-color: var(--white-bg); /* White background for the card */
+  border-radius: var(--border-radius-lg); /* Large rounded corners */
+  padding: 25px; /* Internal padding */
+  box-shadow: var(--shadow-light); /* Standard light shadow */
+  display: flex; /* Use flexbox to arrange Anatomy and HealthStatusCards horizontally */
+  gap: 30px; /* Space between the two internal sections */
+  position: relative; /* Important for positioning children absolutely if needed (e.g., anatomy highlights) */
+  align-items: flex-start; /* Align items to the start of the cross axis (top) */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboardOverview {
+    flex-direction: column; /* Stack anatomy and cards vertically on smaller screens */
+    gap: 20px; /* Reduce gap */
+    padding: 20px; /* Reduce padding */
+  }
+}

@@ -1,0 +1,91 @@
+/* src/styles/DashboardMainContent.module.css */
+.dashboardMainContent {
+  flex-grow: 1;
+  padding: 30px;
+  background-color: var(--gray-bg);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboardTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: var(--text-color-dark);
+}
+
+.gridContainer {
+  display: grid;
+  /* Define two columns: one wider for overview/activity, one narrower for calendar/schedule */
+  grid-template-columns: 2.5fr 1.5fr;
+  /* Define two rows: auto height based on content */
+  grid-template-rows: auto auto;
+  gap: 30px; /* Space between grid items */
+  flex-grow: 1;
+  align-items: start; /* Align items to the start of their grid areas */
+}
+
+/* --- Grid Area Assignments --- */
+/* Target direct children of .gridContainer for explicit placement */
+
+/* 1. DashboardOverview (Top-Left) */
+.gridContainer > *:nth-child(1) {
+  grid-column: 1 / 2; /* Span column 1 */
+  grid-row: 1 / 2;    /* Span row 1 */
+}
+
+/* 2. CalendarView (Top-Right) */
+.gridContainer > *:nth-child(2) {
+  grid-column: 2 / 3; /* Span column 2 */
+  grid-row: 1 / 2;    /* Span row 1 */
+}
+
+/* 3. UpcomingSchedule (Bottom-Right, directly below CalendarView) */
+.gridContainer > *:nth-child(3) {
+  grid-column: 2 / 3; /* Span column 2 */
+  grid-row: 2 / 3;    /* Span row 2 */
+}
+
+/* 4. ActivityFeed (Bottom-Left, directly below DashboardOverview) */
+.gridContainer > *:nth-child(4) {
+  grid-column: 1 / 2; /* Span column 1 */
+  grid-row: 2 / 3;    /* Span row 2 */
+}
+
+/* Responsive adjustments for DashboardMainContent */
+@media (max-width: 1200px) { /* For larger tablets or smaller laptops */
+  .gridContainer {
+    grid-template-columns: 1fr; /* Make it a single column */
+    gap: 20px; /* Reduce gap */
+  }
+  .gridContainer > * { /* Target all direct children */
+    grid-column: 1 / -1; /* Make all grid items span the full width */
+    grid-row: auto; /* Auto-assign rows, stacking them naturally */
+  }
+}
+
+@media (max-width: 768px) { /* For smaller tablets and mobile */
+  .dashboardMainContent {
+    padding: 20px;
+  }
+  .dashboardTitle {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+  }
+  .gridContainer {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) { /* For very small mobile screens */
+  .dashboardMainContent {
+    padding: 15px;
+  }
+  .dashboardTitle {
+    font-size: 1.5rem;
+  }
+  .gridContainer {
+    gap: 15px;
+  }
+}

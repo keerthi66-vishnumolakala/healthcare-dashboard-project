@@ -1,0 +1,126 @@
+/* src/styles/Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: var(--white-bg);
+  box-shadow: var(--shadow-light);
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background-color: var(--gray-bg);
+  border-radius: var(--border-radius-md);
+  padding: 8px 15px;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchBar:focus-within {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px var(--secondary-blue);
+}
+
+.searchIcon {
+  font-size: 1.2rem;
+  color: var(--text-color-light);
+  margin-right: 10px;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-color-dark);
+  padding: 0;
+}
+.searchInput::placeholder {
+  color: var(--text-color-light);
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.headerIcon {
+  font-size: 1.8rem;
+  color: var(--text-color-light);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.headerIcon:hover {
+  color: var(--primary-blue);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.userIcon {
+  font-size: 2.2rem;
+  color: var(--primary-blue);
+}
+
+.userName {
+  font-weight: 500;
+  color: var(--text-color-dark);
+}
+
+/* Hamburger Icon for Mobile (hidden on desktop) */
+.hamburgerIcon {
+  font-size: 2rem;
+  color: var(--text-color-dark);
+  cursor: pointer;
+  display: none; /* Hidden on desktop */
+}
+
+/* Responsive adjustments for Header */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+  .searchBar {
+    flex-grow: 1; /* Allow search bar to take more space */
+  }
+  .searchInput {
+      font-size: 0.9rem;
+  }
+  .rightSection {
+    gap: 15px;
+  }
+  .headerIcon {
+    font-size: 1.5rem;
+  }
+  .userIcon {
+    font-size: 2rem;
+  }
+  .userName {
+    display: none; /* Hide user name on mobile */
+  }
+
+  .hamburgerIcon {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .leftSection {
+    width: 100%; /* Ensure left section takes full width for hamburger and search */
+    justify-content: space-between; /* Space out hamburger and search */
+    gap: 10px; /* Reduce gap */
+  }
+}

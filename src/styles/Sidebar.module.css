@@ -1,0 +1,147 @@
+/* src/styles/Sidebar.module.css */
+.sidebar {
+  width: 250px; /* Default desktop width */
+  min-width: 250px;
+  background-color: var(--white-bg);
+  padding: 30px 0;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky; /* Sticky on desktop */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out; /* For sliding effect */
+}
+
+.sidebarHeader {
+  width: 100%;
+  padding: 0 30px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.generalSection {
+  width: 100%;
+  padding: 0 30px;
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: var(--border-radius-md);
+  color: var(--text-color-light);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navLink:hover {
+  background-color: var(--secondary-blue);
+  color: var(--primary-blue);
+}
+
+.navLink.active {
+  background-color: var(--secondary-blue);
+  color: var(--primary-blue);
+  font-weight: 500;
+}
+
+.navLinkIcon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+.navLinkText {
+  font-size: 1rem;
+}
+
+/* Close button for mobile sidebar (hidden by default) */
+.closeButton {
+  font-size: 2rem;
+  color: var(--text-color-dark);
+  cursor: pointer;
+  display: none; /* Hidden on desktop */
+}
+
+/* Responsive adjustments for Sidebar (Mobile View) */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed; /* Fixed position to allow sliding */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px; /* Explicit width for mobile sidebar */
+    transform: translateX(-100%); /* Hidden by default off-screen */
+    box-shadow: var(--shadow-light); /* Shadow when open */
+    z-index: 1001; /* Above the overlay */
+    padding: 20px 0; /* Adjust padding for mobile */
+    /* Ensure no flex-direction: row or justify-content: space-around here if you want it to be a sliding vertical menu */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Slide in when open */
+  }
+
+  .sidebar.closed {
+    transform: translateX(-100%); /* Slide out when closed */
+  }
+
+  .sidebarHeader {
+    padding: 0 20px;
+  }
+
+  .closeButton {
+    display: block; /* Show close button on mobile */
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .generalSection {
+    padding: 0 20px;
+  }
+
+  .sectionTitle {
+    font-size: 0.75rem;
+  }
+
+  .navLink {
+    padding: 10px 15px;
+  }
+
+  .navLinkIcon {
+    font-size: 1.3rem;
+  }
+
+  .navLinkText {
+    font-size: 0.95rem;
+  }
+}
